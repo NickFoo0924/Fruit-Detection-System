@@ -1,6 +1,9 @@
 # 🍎 Fruit Detection System
 
 A **Streamlit web application** for detecting and classifying fruits using **YOLOv8** and a **CNN model**. Users can upload images or use their camera to detect and classify fruits in real time.
+**Deployed Web App:** [Open Fruit Detection System](https://fruit-detection-system-rvicodghcmxepw36qcpksf.streamlit.app/)
+
+---
 
 ---
 
