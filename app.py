@@ -10,15 +10,20 @@ import os
 # ======================
 # Load Models
 # ======================
-yolo_model_path = "best.pt"
+file_id = "1rpszJBxSTXYG_Z8xe_I_eXQD32RM4IIz"
+# Output filename
+output = "best.pt"
+if not os.path.exists(output):
+    gdown.download(f"https://drive.google.com/uc?export=download&id={file_id}", output, quiet=False)
+
+# Load YOLO model
+yolo_model = YOLO(output)
+
 cnn_model_path = "weights/cnn_model.h5"
 if not os.path.exists(cnn_model_path):
     os.makedirs("weights", exist_ok=True)
     url = "https://drive.google.com/uc?export=download&id=1rpszJBxSTXYG_Z8xe_I_eXQD32RM4IIz"
     gdown.download(url, cnn_model_path, quiet=False)
-
-# Load YOLOv8 model
-yolo_model = YOLO(yolo_model_path)
 
 # Load CNN model
 cnn_model = load_model(cnn_model_path)
