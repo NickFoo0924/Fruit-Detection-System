@@ -31,7 +31,7 @@ fruit-detection-system/
 ├── weights/
 |    └──  best.pt          # YOLOv8 model weights
 └── cnn_fruit.h5           # CNN model 
-
+```
 ---
 
 ## 3. Installation and Running
@@ -40,20 +40,25 @@ fruit-detection-system/
 
 ```bash
 git clone <your-repo-url>
+
 cd fruit-detection-system
+```
 
-Install dependencies:
+#### Install dependencies:
+
+```bash
 pip install -r requirements.txt
+```
 
-Add model:
+### Add model:
 
 You can either download the models manually or let the app download them automatically.
 
 Manual download links:
 
-YOLOv8 model (best.pt): Download here
+YOLOv8 model (best.pt): https://drive.google.com/uc?export=download&id=1rpszJBxSTXYG_Z8xe_I_eXQD32RM4IIz
 
-CNN model (cnn_fruit.h5): Download here
+CNN model (cnn_fruit.h5): https://drive.google.com/uc?export=download&id=1nxe-Jnx55t7lMX5MXg6avqrppu_mqawx
 
 Place these files in the weights/ folder. The app will create the folder if it doesn’t exist.
 
