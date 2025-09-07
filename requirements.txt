@@ -3,3 +3,4 @@ opencv-python-headless==4.8.1.78
 ultralytics
 tensorflow==2.15.0
 numpy
+gdown

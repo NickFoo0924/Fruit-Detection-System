@@ -4,12 +4,18 @@ import numpy as np
 from ultralytics import YOLO
 from tensorflow.keras.models import load_model
 from tensorflow.keras.preprocessing.image import img_to_array
+import gdown
+import os
 
 # ======================
 # Load Models
 # ======================
-yolo_model_path = "https://drive.google.com/uc?id=1rpszJBxSTXYG_Z8xe_I_eXQD32RM4IIz"
-cnn_model_path = "https://drive.google.com/uc?id=1nxe-Jnx55t7lMX5MXg6avqrppu_mqawx"   # <- Add this file in your repo under /weights
+yolo_model_path = "best.pt"
+cnn_model_path = "weights/cnn_model.h5"
+if not os.path.exists(cnn_model_path):
+    os.makedirs("weights", exist_ok=True)
+    url = "https://drive.google.com/uc?export=download&id=1rpszJBxSTXYG_Z8xe_I_eXQD32RM4IIz"
+    gdown.download(url, cnn_model_path, quiet=False)
 
 # Load YOLOv8 model
 yolo_model = YOLO(yolo_model_path)
