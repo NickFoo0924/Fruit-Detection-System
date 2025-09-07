@@ -8,25 +8,31 @@ import gdown
 import os
 
 # ======================
-# Load Models
+# Download & Load YOLO Model
 # ======================
-file_id = "1rpszJBxSTXYG_Z8xe_I_eXQD32RM4IIz"
-# Output filename
-output = "best.pt"
-if not os.path.exists(output):
-    gdown.download(f"https://drive.google.com/uc?export=download&id={file_id}", output, quiet=False)
+yolo_file_id = "1rpszJBxSTXYG_Z8xe_I_eXQD32RM4IIz"
+yolo_output = "best.pt"
 
-# Load YOLO model
-yolo_model = YOLO(output)
+if not os.path.exists(yolo_output):
+    gdown.download(f"https://drive.google.com/uc?export=download&id={yolo_file_id}", yolo_output, quiet=False)
 
-cnn_model_path = "weights/cnn_model.h5"
-if not os.path.exists(cnn_model_path):
-    os.makedirs("weights", exist_ok=True)
-    url = "https://drive.google.com/uc?export=download&id=1rpszJBxSTXYG_Z8xe_I_eXQD32RM4IIz"
-    gdown.download(url, cnn_model_path, quiet=False)
+yolo_model = YOLO(yolo_output)
+
+# ======================
+# Download & Load CNN Model
+# ======================
+cnn_file_id = "1nxe-Jnx55t7lMX5MXg6avqrppu_mqawx"
+cnn_output = "weights/cnn_model.h5"
+
+# Ensure weights folder exists
+os.makedirs("weights", exist_ok=True)
+
+# Download if not exists
+if not os.path.exists(cnn_output):
+    gdown.download(f"https://drive.google.com/uc?export=download&id={cnn_file_id}", cnn_output, quiet=False)
 
 # Load CNN model
-cnn_model = load_model(cnn_model_path)
+cnn_model = load_model(cnn_output)
 
 # CNN class labels
 cnn_labels = ["Apple", "Banana", "Grape", "Orange", "Pineapple", "Watermelon"]
