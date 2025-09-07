@@ -1,0 +1,8 @@
+fruit_cnn_model.h5 
+*.h5
+*.pt
+*.pth
+checkpoints/
+data/
+datasets/
+.DS_Store
