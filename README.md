@@ -5,8 +5,6 @@ A **Streamlit web application** for detecting and classifying fruits using **YOL
 
 ---
 
----
-
 ## 1. About Dataset
 
 - The system uses two types of models:
