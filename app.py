@@ -34,10 +34,12 @@ if not os.path.exists(cnn_output):
 # Load CNN model
 cnn_model = load_model(cnn_output)
 
+st.write("CNN input shape:", cnn_model.input_shape)
+
 # CNN class labels
 cnn_labels = ["Apple", "Banana", "Grape", "Orange", "Pineapple", "Watermelon"]
 
-st.write("CNN input shape:", cnn_model.input_shape)
+
 
 # ======================
 # Sidebar Navigation
@@ -100,25 +102,24 @@ elif mode == "CNN Classification":
     # Run CNN classification
     if frame is not None:
         resized = cv2.resize(frame, (128, 128))
-    
-    # Automatically detect if model expects grayscale or RGB
-    if cnn_model.input_shape[-1] == 1:
-        img_input = cv2.cvtColor(resized, cv2.COLOR_BGR2GRAY)
-        arr = np.expand_dims(img_input, axis=-1)
-    else:
-        arr = cv2.cvtColor(resized, cv2.COLOR_BGR2RGB)
-    
-    arr = img_to_array(arr).astype('float32') / 255.0
-    arr = np.expand_dims(arr, axis=0)
 
-    pred = cnn_model.predict(arr)
-    label = cnn_labels[np.argmax(pred)]
-    confidence = np.max(pred)
+        # Automatically detect if model expects grayscale or RGB
+        if cnn_model.input_shape[-1] == 1:
+            img_input = cv2.cvtColor(resized, cv2.COLOR_BGR2GRAY)
+            arr = np.expand_dims(img_input, axis=-1)
+        else:
+            arr = cv2.cvtColor(resized, cv2.COLOR_BGR2RGB)
 
-    st.image(
-        frame,
-        channels="BGR",
-        caption=f"✅ CNN Prediction: {label} ({confidence:.2f})",
-        use_column_width=True
-    )
+        arr = img_to_array(arr).astype('float32') / 255.0
+        arr = np.expand_dims(arr, axis=0)
 
+        pred = cnn_model.predict(arr)
+        label = cnn_labels[np.argmax(pred)]
+        confidence = np.max(pred)
+
+        st.image(
+            frame,
+            channels="BGR",
+            caption=f"✅ CNN Prediction: {label} ({confidence:.2f})",
+            use_column_width=True
+        )
