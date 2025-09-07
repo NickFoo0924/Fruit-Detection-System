@@ -101,7 +101,7 @@ elif mode == "CNN Classification":
 
     # Run CNN classification
     if frame is not None:
-        resized = cv2.resize(frame, (128, 128))
+        resized = cv2.resize(frame, (224, 224))
 
         # Automatically detect if model expects grayscale or RGB
         if cnn_model.input_shape[-1] == 1:
