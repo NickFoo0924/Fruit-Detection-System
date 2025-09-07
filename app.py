@@ -103,10 +103,10 @@ elif mode == "CNN Classification":
     
     	# Automatically detect if model expects grayscale or RGB
     	if cnn_model.input_shape[-1] == 1:
-        	img_input = cv2.cvtColor(resized, cv2.COLOR_BGR2GRAY)
-        	arr = np.expand_dims(img_input, axis=-1)
+            img_input = cv2.cvtColor(resized, cv2.COLOR_BGR2GRAY)
+            arr = np.expand_dims(img_input, axis=-1)
     	else:
-        	arr = cv2.cvtColor(resized, cv2.COLOR_BGR2RGB)
+            arr = cv2.cvtColor(resized, cv2.COLOR_BGR2RGB)
     
     	arr = img_to_array(arr).astype('float32') / 255.0
     	arr = np.expand_dims(arr, axis=0)
