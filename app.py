@@ -8,8 +8,8 @@ from tensorflow.keras.preprocessing.image import img_to_array
 # ======================
 # Load Models
 # ======================
-yolo_model_path = "best.pt"
-cnn_model_path = "cnn_fruit.h5"   # <- Add this file in your repo under /weights
+yolo_model_path = "https://drive.google.com/uc?id=1rpszJBxSTXYG_Z8xe_I_eXQD32RM4IIz"
+cnn_model_path = "https://drive.google.com/uc?id=1nxe-Jnx55t7lMX5MXg6avqrppu_mqawx"   # <- Add this file in your repo under /weights
 
 # Load YOLOv8 model
 yolo_model = YOLO(yolo_model_path)
